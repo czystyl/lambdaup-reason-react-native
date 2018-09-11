@@ -59,8 +59,8 @@ function getData() {
               ]);
     } else {
       return /* Response */Block.__(0, [
-                202,
-                data
+                200,
+                /* [] */0
               ]);
     }
   } else {

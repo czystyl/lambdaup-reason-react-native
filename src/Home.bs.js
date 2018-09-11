@@ -9,6 +9,7 @@ var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
 var Text$BsReactNative = require("bs-react-native/src/components/text.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
 var Style$BsReactNative = require("bs-react-native/src/style.js");
+var NoData$LambdaReasonReactNative = require("./NoData.bs.js");
 var MockedApi$LambdaReasonReactNative = require("./MockedApi.bs.js");
 var ErrorMessage$LambdaReasonReactNative = require("./ErrorMessage.bs.js");
 var FilteredList$LambdaReasonReactNative = require("./FilteredList.bs.js");
@@ -48,9 +49,12 @@ function make() {
                 } else if (match$1[0] !== 200) {
                   exit = 1;
                 } else {
-                  tmp = ReasonReact.element(undefined, undefined, FilteredList$LambdaReasonReactNative.make(ArrayLabels.of_list(match$1[1]), (function () {
-                              return Curry._1(self[/* send */3], /* LoadData */0);
-                            }), /* array */[]));
+                  var data = match$1[1];
+                  tmp = data ? ReasonReact.element(undefined, undefined, FilteredList$LambdaReasonReactNative.make(ArrayLabels.of_list(data), (function () {
+                                return Curry._1(self[/* send */3], /* LoadData */0);
+                              }), /* array */[])) : ReasonReact.element(undefined, undefined, NoData$LambdaReasonReactNative.make((function () {
+                                return Curry._1(self[/* send */3], /* LoadData */0);
+                              }), /* array */[]));
                 }
               } else {
                 exit = 1;
@@ -61,7 +65,7 @@ function make() {
                           }), /* array */[]));
               }
               return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(container), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
-                              ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */["Hello LambdUp!"])),
+                              ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */["PEOPLE"])),
                               tmp
                             ]));
             }),

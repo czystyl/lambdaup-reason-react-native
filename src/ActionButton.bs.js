@@ -3,12 +3,11 @@
 
 var ReasonReact = require("reason-react/src/ReasonReact.js");
 var Text$BsReactNative = require("bs-react-native/src/components/text.js");
-var View$BsReactNative = require("bs-react-native/src/components/view.js");
-var ActionButton$LambdaReasonReactNative = require("./ActionButton.bs.js");
+var TouchableOpacity$BsReactNative = require("bs-react-native/src/components/touchableOpacity.js");
 
-var component = ReasonReact.statelessComponent("ErrorMessage");
+var component = ReasonReact.statelessComponent("ActionButton");
 
-function make(message, code, onRefresh, _) {
+function make(onPress, text, _) {
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -20,10 +19,7 @@ function make(message, code, onRefresh, _) {
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function () {
-              return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
-                              ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */[String(code) + (" - " + message)])),
-                              ReasonReact.element(undefined, undefined, ActionButton$LambdaReasonReactNative.make(onRefresh, "Refresh", /* array */[]))
-                            ]));
+              return ReasonReact.element(undefined, undefined, TouchableOpacity$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, onPress, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */[text]))]));
             }),
           /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],

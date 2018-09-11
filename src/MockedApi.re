@@ -22,7 +22,7 @@ let getData = () => {
   let randomValue = Random.int(4);
   switch (randomValue) {
   | 0 => Error(404, "Cannot find data")
-  | 1 => Response(202, data)
+  | 1 => Response(200, [])
   | _ => Response(200, data)
   };
 };

@@ -6,9 +6,9 @@ var Text$BsReactNative = require("bs-react-native/src/components/text.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
 var ActionButton$LambdaReasonReactNative = require("./ActionButton.bs.js");
 
-var component = ReasonReact.statelessComponent("ErrorMessage");
+var component = ReasonReact.statelessComponent("NoData");
 
-function make(message, code, onRefresh, _) {
+function make(onRefresh, _) {
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -21,7 +21,7 @@ function make(message, code, onRefresh, _) {
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function () {
               return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
-                              ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */[String(code) + (" - " + message)])),
+                              ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */["No Data. Try to refresh!"])),
                               ReasonReact.element(undefined, undefined, ActionButton$LambdaReasonReactNative.make(onRefresh, "Refresh", /* array */[]))
                             ]));
             }),

@@ -30,9 +30,11 @@ let make = _children => {
   didMount: self => self.send(LoadData),
   render: self =>
     <View style=Styles.container>
-      <Text> {ReasonReact.string("Hello LambdUp!")} </Text>
+      <Text> {ReasonReact.string("PEOPLE")} </Text>
       {
         switch (self.state.response) {
+        | Some(Response(200, [])) =>
+          <NoData onRefresh=(() => self.send(LoadData)) />
         | Some(Response(200, data)) =>
           <FilteredList
             data={ArrayLabels.of_list(data)}
