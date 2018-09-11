@@ -6,9 +6,9 @@ var Curry = require("bs-platform/lib/js/curry.js");
 var ArrayLabels = require("bs-platform/lib/js/arrayLabels.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
 var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
-var Text$BsReactNative = require("bs-react-native/src/components/text.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
 var Style$BsReactNative = require("bs-react-native/src/style.js");
+var Header$LambdaReasonReactNative = require("./Header.bs.js");
 var NoData$LambdaReasonReactNative = require("./NoData.bs.js");
 var MockedApi$LambdaReasonReactNative = require("./MockedApi.bs.js");
 var ErrorMessage$LambdaReasonReactNative = require("./ErrorMessage.bs.js");
@@ -65,7 +65,7 @@ function make() {
                           }), /* array */[]));
               }
               return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(container), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
-                              ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */["PEOPLE"])),
+                              ReasonReact.element(undefined, undefined, Header$LambdaReasonReactNative.make("PEOPLE", /* array */[])),
                               tmp
                             ]));
             }),

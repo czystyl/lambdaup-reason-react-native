@@ -3,13 +3,24 @@ open BsReactNative;
 module Styles = {
   open Style;
 
-  let itemContainer = style([padding(Pt(10.))]);
+  let itemContainer =
+    style([
+      padding(Pt(15.)),
+      borderBottomWidth(1.),
+      borderBottomColor(Colors.light),
+    ]);
 };
 
 let renderItem =
   FlatList.renderItem((event: FlatList.renderBag(MockedApi.person)) =>
     <View style=Styles.itemContainer>
-      <Text> {ReasonReact.string(event.item.firstName)} </Text>
+      <Text>
+        {
+          ReasonReact.string(
+            event.item.firstName ++ " " ++ event.item.lastName,
+          )
+        }
+      </Text>
     </View>
   );
 

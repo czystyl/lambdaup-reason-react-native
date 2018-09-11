@@ -30,7 +30,7 @@ let make = _children => {
   didMount: self => self.send(LoadData),
   render: self =>
     <View style=Styles.container>
-      <Text> {ReasonReact.string("PEOPLE")} </Text>
+      <Header text="PEOPLE" />
       {
         switch (self.state.response) {
         | Some(Response(200, [])) =>

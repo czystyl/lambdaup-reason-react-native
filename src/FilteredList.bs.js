@@ -8,17 +8,24 @@ var Text$BsReactNative = require("bs-react-native/src/components/text.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
 var Style$BsReactNative = require("bs-react-native/src/style.js");
 var FlatList$BsReactNative = require("bs-react-native/src/components/flatList.js");
+var Colors$LambdaReasonReactNative = require("./Colors.bs.js");
 
 var itemContainer = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.padding(/* Pt */Block.__(0, [10])),
-      /* [] */0
+      Style$BsReactNative.padding(/* Pt */Block.__(0, [15])),
+      /* :: */[
+        Style$BsReactNative.borderBottomWidth(1),
+        /* :: */[
+          Style$BsReactNative.borderBottomColor(Colors$LambdaReasonReactNative.light),
+          /* [] */0
+        ]
+      ]
     ]);
 
 var Styles = /* module */[/* itemContainer */itemContainer];
 
 function renderItem(param) {
   return FlatList$BsReactNative.renderItem((function ($$event) {
-                return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(itemContainer), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */[$$event[/* item */0][/* firstName */0]]))]));
+                return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(itemContainer), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */[$$event[/* item */0][/* firstName */0] + (" " + $$event[/* item */0][/* lastName */1])]))]));
               }), param);
 }
 
