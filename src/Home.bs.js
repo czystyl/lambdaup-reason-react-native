@@ -2,21 +2,19 @@
 'use strict';
 
 var Block = require("bs-platform/lib/js/block.js");
+var ArrayLabels = require("bs-platform/lib/js/arrayLabels.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
 var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
 var Text$BsReactNative = require("bs-react-native/src/components/text.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
 var Style$BsReactNative = require("bs-react-native/src/style.js");
+var MockedApi$LambdaReasonReactNative = require("./MockedApi.bs.js");
+var ErrorMessage$LambdaReasonReactNative = require("./ErrorMessage.bs.js");
+var FilteredList$LambdaReasonReactNative = require("./FilteredList.bs.js");
 
 var container = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.alignItems(/* Center */2),
-      /* :: */[
-        Style$BsReactNative.justifyContent(/* Center */2),
-        /* :: */[
-          Style$BsReactNative.paddingTop(/* Pt */Block.__(0, [30])),
-          /* [] */0
-        ]
-      ]
+      Style$BsReactNative.paddingTop(/* Pt */Block.__(0, [30])),
+      /* [] */0
     ]);
 
 var Styles = /* module */[/* container */container];
@@ -35,7 +33,17 @@ function make() {
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function () {
-              return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(container), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */["Hello LambdUp!"]))]));
+              var response = MockedApi$LambdaReasonReactNative.getData(/* () */0);
+              var tmp;
+              tmp = response.tag ? ReasonReact.element(undefined, undefined, ErrorMessage$LambdaReasonReactNative.make(response[1], response[0], /* array */[])) : (
+                  response[0] !== 200 ? ReasonReact.element(undefined, undefined, ErrorMessage$LambdaReasonReactNative.make("Cannot load data!", 400, /* array */[])) : ReasonReact.element(undefined, undefined, FilteredList$LambdaReasonReactNative.make(ArrayLabels.of_list(response[1]), (function () {
+                                return /* () */0;
+                              }), /* array */[]))
+                );
+              return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(container), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
+                              ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */["Hello LambdUp!"])),
+                              tmp
+                            ]));
             }),
           /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],
