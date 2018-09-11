@@ -7,7 +7,6 @@ var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
 var Text$BsReactNative = require("bs-react-native/src/components/text.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
 var Style$BsReactNative = require("bs-react-native/src/style.js");
-var Colors$LambdaReasonReactNative = require("./Colors.bs.js");
 var ActionButton$LambdaReasonReactNative = require("./ActionButton.bs.js");
 
 var container = Style$BsReactNative.style(/* :: */[
@@ -15,22 +14,34 @@ var container = Style$BsReactNative.style(/* :: */[
       /* [] */0
     ]);
 
-var text = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.margin(/* Pt */Block.__(0, [30])),
+var code = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.marginTop(/* Pt */Block.__(0, [30])),
       /* :: */[
-        Style$BsReactNative.color(Colors$LambdaReasonReactNative.dark),
+        Style$BsReactNative.fontSize(/* Float */Block.__(0, [30])),
+        /* :: */[
+          Style$BsReactNative.color(/* String */Block.__(0, ["red"])),
+          /* [] */0
+        ]
+      ]
+    ]);
+
+var text = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.marginBottom(/* Pt */Block.__(0, [30])),
+      /* :: */[
+        Style$BsReactNative.color(/* String */Block.__(0, ["red"])),
         /* [] */0
       ]
     ]);
 
 var Styles = /* module */[
   /* container */container,
+  /* code */code,
   /* text */text
 ];
 
 var component = ReasonReact.statelessComponent("ErrorMessage");
 
-function make(message, code, onRefresh, _) {
+function make(message, code$1, onRefresh, _) {
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -43,7 +54,8 @@ function make(message, code, onRefresh, _) {
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function () {
               return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(container), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
-                              ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(text), undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */[String(code) + (" - " + message)])),
+                              ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(code), undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */[String(code$1)])),
+                              ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(text), undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */[message])),
                               ReasonReact.element(undefined, undefined, ActionButton$LambdaReasonReactNative.make(onRefresh, "Refresh", /* array */[]))
                             ]));
             }),
