@@ -8,37 +8,43 @@ var data = /* :: */[
   /* record */[
     /* firstName */"Jakub",
     /* lastName */"Klobus",
-    /* id */0
+    /* id */0,
+    /* photo */""
   ],
   /* :: */[
     /* record */[
       /* firstName */"Matt",
       /* lastName */"Zatorski",
-      /* id */1
+      /* id */1,
+      /* photo */""
     ],
     /* :: */[
       /* record */[
         /* firstName */"Luke",
         /* lastName */"Czyszczonik",
-        /* id */2
+        /* id */2,
+        /* photo */""
       ],
       /* :: */[
         /* record */[
           /* firstName */"Adam",
           /* lastName */"Malysz",
-          /* id */3
+          /* id */3,
+          /* photo */""
         ],
         /* :: */[
           /* record */[
             /* firstName */"Lambd",
             /* lastName */"Up",
-            /* id */4
+            /* id */4,
+            /* photo */""
           ],
           /* :: */[
             /* record */[
               /* firstName */"Mike",
               /* lastName */"Grabowski",
-              /* id */5
+              /* id */5,
+              /* photo */""
             ],
             /* [] */0
           ]

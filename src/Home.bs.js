@@ -10,6 +10,7 @@ var Style$BsReactNative = require("bs-react-native/src/style.js");
 var Header$LambdaReasonReactNative = require("./Header.bs.js");
 var NoData$LambdaReasonReactNative = require("./NoData.bs.js");
 var MockedApi$LambdaReasonReactNative = require("./MockedApi.bs.js");
+var PersonModal$LambdaReasonReactNative = require("./PersonModal.bs.js");
 var ErrorMessage$LambdaReasonReactNative = require("./ErrorMessage.bs.js");
 var FilteredList$LambdaReasonReactNative = require("./FilteredList.bs.js");
 
@@ -52,8 +53,10 @@ function make() {
                   tmp = data ? ReasonReact.element(undefined, undefined, FilteredList$LambdaReasonReactNative.make(data, (function () {
                                 return Curry._1(self[/* send */3], /* LoadData */0);
                               }), (function (value) {
-                                return Curry._1(self[/* send */3], /* ChangeQuery */[value]);
-                              }), self[/* state */1][/* searchQuery */0], /* array */[])) : ReasonReact.element(undefined, undefined, NoData$LambdaReasonReactNative.make((function () {
+                                return Curry._1(self[/* send */3], /* ChangeQuery */Block.__(0, [value]));
+                              }), self[/* state */1][/* searchQuery */0], (function (person) {
+                                return Curry._1(self[/* send */3], /* OpenModal */Block.__(1, [person]));
+                              }), /* array */[])) : ReasonReact.element(undefined, undefined, NoData$LambdaReasonReactNative.make((function () {
                                 return Curry._1(self[/* send */3], /* LoadData */0);
                               }), /* array */[]));
                 }
@@ -65,29 +68,50 @@ function make() {
                             return Curry._1(self[/* send */3], /* LoadData */0);
                           }), /* array */[]));
               }
+              var match$2 = self[/* state */1][/* openedModal */2];
               return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(container), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
                               ReasonReact.element(undefined, undefined, Header$LambdaReasonReactNative.make("PEOPLE", /* array */[])),
-                              tmp
+                              tmp,
+                              match$2 !== undefined ? ReasonReact.element(undefined, undefined, PersonModal$LambdaReasonReactNative.make(match$2, (function () {
+                                            return Curry._1(self[/* send */3], /* CloseModal */1);
+                                          }), /* array */[])) : null
                             ]));
             }),
           /* initialState */(function () {
               return /* record */[
                       /* searchQuery */"",
-                      /* response */undefined
+                      /* response */undefined,
+                      /* openedModal */undefined
                     ];
             }),
           /* retainedProps */component[/* retainedProps */11],
           /* reducer */(function (action, state) {
-              if (action) {
-                return /* Update */Block.__(0, [/* record */[
-                            /* searchQuery */action[0],
-                            /* response */state[/* response */1]
-                          ]]);
-              } else {
-                var response = MockedApi$LambdaReasonReactNative.getData(/* () */0);
+              if (typeof action === "number") {
+                if (action === 0) {
+                  var response = MockedApi$LambdaReasonReactNative.getData(/* () */0);
+                  return /* Update */Block.__(0, [/* record */[
+                              /* searchQuery */state[/* searchQuery */0],
+                              /* response */response,
+                              /* openedModal */state[/* openedModal */2]
+                            ]]);
+                } else {
+                  return /* Update */Block.__(0, [/* record */[
+                              /* searchQuery */state[/* searchQuery */0],
+                              /* response */state[/* response */1],
+                              /* openedModal */undefined
+                            ]]);
+                }
+              } else if (action.tag) {
                 return /* Update */Block.__(0, [/* record */[
                             /* searchQuery */state[/* searchQuery */0],
-                            /* response */response
+                            /* response */state[/* response */1],
+                            /* openedModal */action[0]
+                          ]]);
+              } else {
+                return /* Update */Block.__(0, [/* record */[
+                            /* searchQuery */action[0],
+                            /* response */state[/* response */1],
+                            /* openedModal */state[/* openedModal */2]
                           ]]);
               }
             }),

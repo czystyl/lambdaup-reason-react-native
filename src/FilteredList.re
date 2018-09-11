@@ -20,17 +20,19 @@ module Styles = {
     ]);
 };
 
-let renderItem =
+let renderItem = onItemPress =>
   FlatList.renderItem((event: FlatList.renderBag(MockedApi.person)) =>
-    <View style=Styles.itemContainer>
-      <Text>
-        {
-          ReasonReact.string(
-            event.item.firstName ++ " " ++ event.item.lastName,
-          )
-        }
-      </Text>
-    </View>
+    <TouchableOpacity onPress={() => onItemPress(event.item)}>
+      <View style=Styles.itemContainer>
+        <Text>
+          {
+            ReasonReact.string(
+              event.item.firstName ++ " " ++ event.item.lastName,
+            )
+          }
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 
 let component = ReasonReact.statelessComponent("FilteredList");
@@ -41,6 +43,7 @@ let make =
       ~onRefresh,
       ~onChangeQuery,
       ~searchQuery,
+      ~onItemPress,
       _children,
     ) => {
   ...component,
@@ -62,7 +65,7 @@ let make =
       />
       <FlatList
         data={Array.of_list(filteredData)}
-        renderItem
+        renderItem={renderItem(onItemPress)}
         keyExtractor={(event, _index) => string_of_int(event.id)}
         refreshing=false
         onRefresh

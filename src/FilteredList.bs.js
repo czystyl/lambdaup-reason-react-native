@@ -4,6 +4,7 @@
 var List = require("bs-platform/lib/js/list.js");
 var $$Array = require("bs-platform/lib/js/array.js");
 var Block = require("bs-platform/lib/js/block.js");
+var Curry = require("bs-platform/lib/js/curry.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
 var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
 var Text$BsReactNative = require("bs-react-native/src/components/text.js");
@@ -12,6 +13,7 @@ var Style$BsReactNative = require("bs-react-native/src/style.js");
 var FlatList$BsReactNative = require("bs-react-native/src/components/flatList.js");
 var TextInput$BsReactNative = require("bs-react-native/src/components/textInput.js");
 var Colors$LambdaReasonReactNative = require("./Colors.bs.js");
+var TouchableOpacity$BsReactNative = require("bs-react-native/src/components/touchableOpacity.js");
 
 var itemContainer = Style$BsReactNative.style(/* :: */[
       Style$BsReactNative.padding(/* Pt */Block.__(0, [15])),
@@ -46,15 +48,19 @@ var Styles = /* module */[
   /* input */input
 ];
 
-function renderItem(param) {
-  return FlatList$BsReactNative.renderItem((function ($$event) {
-                return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(itemContainer), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */[$$event[/* item */0][/* firstName */0] + (" " + $$event[/* item */0][/* lastName */1])]))]));
-              }), param);
+function renderItem(onItemPress) {
+  return (function (param) {
+      return FlatList$BsReactNative.renderItem((function ($$event) {
+                    return ReasonReact.element(undefined, undefined, TouchableOpacity$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, (function () {
+                                        return Curry._1(onItemPress, $$event[/* item */0]);
+                                      }), undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(itemContainer), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */[$$event[/* item */0][/* firstName */0] + (" " + $$event[/* item */0][/* lastName */1])]))]))]));
+                  }), param);
+    });
 }
 
 var component = ReasonReact.statelessComponent("FilteredList");
 
-function make(data, onRefresh, onChangeQuery, searchQuery, _) {
+function make(data, onRefresh, onChangeQuery, searchQuery, onItemPress, _) {
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -71,7 +77,7 @@ function make(data, onRefresh, onChangeQuery, searchQuery, _) {
                       }))(data);
               return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
                               ReasonReact.element(undefined, undefined, TextInput$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(input), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, onChangeQuery, undefined, undefined, undefined, undefined, undefined, undefined, "search", undefined, undefined, undefined, undefined, undefined, undefined, searchQuery, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[])),
-                              ReasonReact.element(undefined, undefined, FlatList$BsReactNative.make($$Array.of_list(filteredData), renderItem, (function ($$event, _) {
+                              ReasonReact.element(undefined, undefined, FlatList$BsReactNative.make($$Array.of_list(filteredData), renderItem(onItemPress), (function ($$event, _) {
                                             return String($$event[/* id */2]);
                                           }), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, onRefresh, undefined, undefined, undefined, false, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]))
                             ]));
