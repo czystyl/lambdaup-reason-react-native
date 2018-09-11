@@ -2,21 +2,26 @@
 
 ## Exercise
 Application which render list of people. With possibility of filtering. Should implement below features:
- - flat list with user data
- - swipe down to refresh
- - get data from `MockedAPI` module
- - error handling (via pattern mathching on `getData` response) - app should render error code and message together with "Refresh" button
- - empty state handling (via pattern mathching on `getData` response) - for empty data app should render some message with "Refresh" button
- - filtering - simple input and filtering by name
- - basic styles
- - \* show modal with picture and detailed data on item press
- - ** use real data from https://jsonplaceholder.typicode.com/users
+ 1.  flat list with user data
+   - get data from `MockedAPI` module
+   - swipe down to refresh
+   - error handling (via pattern mathching on `getData` response) - app should render error code and message together with "Refresh" button
+   - empty state handling (via pattern mathching on `getData` response) - for empty data app should render some message with "Refresh" button
+ 2. filtering - simple input and filtering by name
+ 3. basic styles
+ 4. \* show modal with picture and detailed data on item press
+ 5. ** use real data from https://jsonplaceholder.typicode.com/users
 
 ###MockedApi module
 `getData()` function randomly returns one of these three states:
  - Response(200, list(data))
  - Response(200, [])
  - Error(code, message)
+
+### Tips & trics
+- for filtering string you can use `Js.String.filter()` function - https://bucklescript.github.io/bucklescript/api/Js.String.html 
+- for refreshing FlatList by swiping down you can use `onRefresh` and `refreshing` props
+- fetched data can be stored in component state (reducer) as `MockedApi.response` variant and pattern matched in render
 
 ## Build and run
 ### with yarn
