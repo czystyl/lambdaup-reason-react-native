@@ -34,9 +34,7 @@ let make = (~person: MockedApi.person, ~onClose, _children) => {
         <Text style=Styles.name>
           {ReasonReact.string(person.firstName)}
         </Text>
-        <Text style=Styles.name>
-          {ReasonReact.string(person.firstName)}
-        </Text>
+        <Text style=Styles.name> {ReasonReact.string(person.lastName)} </Text>
         <Image
           style=Styles.image
           source={
