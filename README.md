@@ -12,7 +12,9 @@ Application which render list of people. With possibility of filtering. Should i
  4. \* show modal with picture and detailed data on item press
  5. ** use real data from https://jsonplaceholder.typicode.com/users
 
-###MockedApi module
+![app example](lambdup-app.gif)
+
+### MockedApi module
 `getData()` function randomly returns one of these three states:
  - Response(200, list(data))
  - Response(200, [])
