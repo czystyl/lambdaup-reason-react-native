@@ -22,7 +22,7 @@ function renderItem(param) {
               }), param);
 }
 
-var component = ReasonReact.reducerComponent("FilteredList");
+var component = ReasonReact.statelessComponent("FilteredList");
 
 function make(data, onRefresh, _) {
   return /* record */[
@@ -40,13 +40,9 @@ function make(data, onRefresh, _) {
                                             return String($$event[/* id */2]);
                                           }), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, onRefresh, undefined, undefined, undefined, false, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[]))]));
             }),
-          /* initialState */(function () {
-              return /* record */[/* searchQuery */""];
-            }),
+          /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],
-          /* reducer */(function (action, _) {
-              return /* Update */Block.__(0, [/* record */[/* searchQuery */action[0]]]);
-            }),
+          /* reducer */component[/* reducer */12],
           /* jsElementWrapped */component[/* jsElementWrapped */13]
         ];
 }

@@ -6,25 +6,47 @@ module Styles = {
   let container = style([paddingTop(Pt(30.))]);
 };
 
-let component = ReasonReact.statelessComponent("Home");
+type state = {
+  searchQuery: string,
+  response: option(MockedApi.response),
+};
+
+type action =
+  | ChangeQuery(string)
+  | LoadData;
+
+let component = ReasonReact.reducerComponent("Home");
 
 let make = _children => {
   ...component,
-  render: _self => {
-    let response = MockedApi.getData();
+  initialState: () => {searchQuery: "", response: None},
+  reducer: (action, state) =>
+    switch (action) {
+    | ChangeQuery(searchQuery) => ReasonReact.Update({...state, searchQuery})
+    | LoadData =>
+      let response = MockedApi.getData();
+      ReasonReact.Update({...state, response: Some(response)});
+    },
+  didMount: self => self.send(LoadData),
+  render: self =>
     <View style=Styles.container>
       <Text> {ReasonReact.string("Hello LambdUp!")} </Text>
       {
-        switch (response) {
-        | Response(200, data) =>
+        switch (self.state.response) {
+        | Some(Response(200, data)) =>
           <FilteredList
             data={ArrayLabels.of_list(data)}
-            onRefresh=(() => ())
+            onRefresh=(() => self.send(LoadData))
           />
-        | Error(code, message) => <ErrorMessage code message />
-        | _ => <ErrorMessage code=400 message="Cannot load data!" />
+        | Some(Error(code, message)) =>
+          <ErrorMessage code message onRefresh=(() => self.send(LoadData)) />
+        | _ =>
+          <ErrorMessage
+            code=400
+            message="Cannot load data!"
+            onRefresh=(() => self.send(LoadData))
+          />
         }
       }
-    </View>;
-  },
+    </View>,
 };

@@ -13,20 +13,10 @@ let renderItem =
     </View>
   );
 
-type state = {searchQuery: string};
-
-type action =
-  | ChangeQuery(string);
-
-let component = ReasonReact.reducerComponent("FilteredList");
+let component = ReasonReact.statelessComponent("FilteredList");
 
 let make = (~data: array(MockedApi.person), ~onRefresh, _children) => {
   ...component,
-  initialState: () => {searchQuery: ""},
-  reducer: (action, state) =>
-    switch (action) {
-    | ChangeQuery(searchQuery) => ReasonReact.Update({...state, searchQuery})
-    },
   render: _children =>
     <View>
       <FlatList
