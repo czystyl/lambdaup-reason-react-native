@@ -7,32 +7,38 @@ var Random = require("bs-platform/lib/js/random.js");
 var data = /* :: */[
   /* record */[
     /* firstName */"Jakub",
-    /* lastName */"Klobus"
+    /* lastName */"Klobus",
+    /* id */0
   ],
   /* :: */[
     /* record */[
       /* firstName */"Matt",
-      /* lastName */"Zatorski"
+      /* lastName */"Zatorski",
+      /* id */1
     ],
     /* :: */[
       /* record */[
         /* firstName */"Luke",
-        /* lastName */"Czyszczonik"
+        /* lastName */"Czyszczonik",
+        /* id */2
       ],
       /* :: */[
         /* record */[
           /* firstName */"Adam",
-          /* lastName */"Malysz"
+          /* lastName */"Malysz",
+          /* id */3
         ],
         /* :: */[
           /* record */[
             /* firstName */"Lambd",
-            /* lastName */"Up"
+            /* lastName */"Up",
+            /* id */4
           ],
           /* :: */[
             /* record */[
               /* firstName */"Mike",
-              /* lastName */"Grabowski"
+              /* lastName */"Grabowski",
+              /* id */5
             ],
             /* [] */0
           ]
@@ -53,8 +59,8 @@ function getData() {
               ]);
     } else {
       return /* Response */Block.__(0, [
-                202,
-                data
+                200,
+                /* [] */0
               ]);
     }
   } else {
