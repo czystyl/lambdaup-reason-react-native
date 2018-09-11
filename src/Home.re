@@ -37,8 +37,10 @@ let make = _children => {
           <NoData onRefresh=(() => self.send(LoadData)) />
         | Some(Response(200, data)) =>
           <FilteredList
-            data={ArrayLabels.of_list(data)}
+            data
             onRefresh=(() => self.send(LoadData))
+            onChangeQuery=(value => self.send(ChangeQuery(value)))
+            searchQuery={self.state.searchQuery}
           />
         | Some(Error(code, message)) =>
           <ErrorMessage code message onRefresh=(() => self.send(LoadData)) />

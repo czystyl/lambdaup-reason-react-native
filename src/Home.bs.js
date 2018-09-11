@@ -3,7 +3,6 @@
 
 var Block = require("bs-platform/lib/js/block.js");
 var Curry = require("bs-platform/lib/js/curry.js");
-var ArrayLabels = require("bs-platform/lib/js/arrayLabels.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
 var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
@@ -50,9 +49,11 @@ function make() {
                   exit = 1;
                 } else {
                   var data = match$1[1];
-                  tmp = data ? ReasonReact.element(undefined, undefined, FilteredList$LambdaReasonReactNative.make(ArrayLabels.of_list(data), (function () {
+                  tmp = data ? ReasonReact.element(undefined, undefined, FilteredList$LambdaReasonReactNative.make(data, (function () {
                                 return Curry._1(self[/* send */3], /* LoadData */0);
-                              }), /* array */[])) : ReasonReact.element(undefined, undefined, NoData$LambdaReasonReactNative.make((function () {
+                              }), (function (value) {
+                                return Curry._1(self[/* send */3], /* ChangeQuery */[value]);
+                              }), self[/* state */1][/* searchQuery */0], /* array */[])) : ReasonReact.element(undefined, undefined, NoData$LambdaReasonReactNative.make((function () {
                                 return Curry._1(self[/* send */3], /* LoadData */0);
                               }), /* array */[]));
                 }
