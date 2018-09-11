@@ -2,7 +2,6 @@ type person = {
   firstName: string,
   lastName: string,
   id: int,
-  photo: string,
 };
 
 type response =
@@ -10,12 +9,12 @@ type response =
   | Error(int, string);
 
 let data = [
-  {firstName: "Jakub", lastName: "Klobus", id: 0, photo: ""},
-  {firstName: "Matt", lastName: "Zatorski", id: 1, photo: ""},
-  {firstName: "Luke", lastName: "Czyszczonik", id: 2, photo: ""},
-  {firstName: "Adam", lastName: "Malysz", id: 3, photo: ""},
-  {firstName: "Lambd", lastName: "Up", id: 4, photo: ""},
-  {firstName: "Mike", lastName: "Grabowski", id: 5, photo: ""},
+  {firstName: "Jakub", lastName: "Klobus", id: 0},
+  {firstName: "Matt", lastName: "Zatorski", id: 1},
+  {firstName: "Luke", lastName: "Czyszczonik", id: 2},
+  {firstName: "Adam", lastName: "Malysz", id: 3},
+  {firstName: "Lambd", lastName: "Up", id: 4},
+  {firstName: "Mike", lastName: "Grabowski", id: 5},
 ];
 
 let getData = () => {

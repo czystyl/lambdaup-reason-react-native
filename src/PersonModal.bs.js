@@ -6,6 +6,7 @@ var ReasonReact = require("reason-react/src/ReasonReact.js");
 var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
 var Text$BsReactNative = require("bs-react-native/src/components/text.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
+var Image$BsReactNative = require("bs-react-native/src/components/image.js");
 var Modal$BsReactNative = require("bs-react-native/src/components/modal.js");
 var Style$BsReactNative = require("bs-react-native/src/style.js");
 var Colors$LambdaReasonReactNative = require("./Colors.bs.js");
@@ -59,10 +60,16 @@ var button = Style$BsReactNative.style(/* :: */[
       ]
     ]);
 
+var image = Style$BsReactNative.style(/* :: */[
+      Style$BsReactNative.width(/* Pt */Block.__(0, [200])),
+      /* [] */0
+    ]);
+
 var Styles = /* module */[
   /* container */container,
   /* name */name,
-  /* button */button
+  /* button */button,
+  /* image */image
 ];
 
 var component = ReasonReact.statelessComponent("PersonModal");
@@ -82,6 +89,7 @@ function make(person, onClose, _) {
               return ReasonReact.element(undefined, undefined, Modal$BsReactNative.make(/* slide */-20462287, undefined, true, undefined, undefined, onClose, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(container), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
                                         ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(name), undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */[person[/* firstName */0]])),
                                         ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(name), undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */[person[/* firstName */0]])),
+                                        ReasonReact.element(undefined, undefined, Image$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, /* URI */Block.__(0, [Image$BsReactNative.imageURISource("https://api.adorable.io/avatars/285/" + String(person[/* id */2]), undefined, undefined, undefined, undefined, undefined, undefined, 200, 200, /* () */0)]), Js_primitive.some(image), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[])),
                                         ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(button), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, ActionButton$LambdaReasonReactNative.make(onClose, "Close", /* array */[]))]))
                                       ]))]));
             }),
