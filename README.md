@@ -1,16 +1,22 @@
 # lambdaup-reason-react-native
 
-## TO DO
+## Exercise
 Application which render list of people. With possibility of filtering. Should implement below features:
  - flat list with user data
  - swipe down to refresh
- - get data from mockedAPI module. `getData()` function returns variant - Response(code, data) | Error(code, message).
- - error handling (via pattern mathching on `getData` response) - this function will send Error randomly
+ - get data from `MockedAPI` module
+ - error handling (via pattern mathching on `getData` response) - app should render error code and message together with "Refresh" button
+ - empty state handling (via pattern mathching on `getData` response) - for empty data app should render some message with "Refresh" button
  - filtering - simple input and filtering by name
- - button to reverse names - recursive function to revers order of letters in name
  - basic styles
  - \* show modal with picture and detailed data on item press
  - ** use real data from https://jsonplaceholder.typicode.com/users
+
+###MockedApi module
+`getData()` function randomly returns one of these three states:
+ - Response(200, list(data))
+ - Response(200, [])
+ - Error(code, message)
 
 ## Build and run
 ### with yarn
