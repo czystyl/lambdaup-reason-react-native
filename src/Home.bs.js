@@ -2,26 +2,26 @@
 'use strict';
 
 var Block = require("bs-platform/lib/js/block.js");
+var Curry = require("bs-platform/lib/js/curry.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
 var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
-var Text$BsReactNative = require("bs-react-native/src/components/text.js");
 var View$BsReactNative = require("bs-react-native/src/components/view.js");
 var Style$BsReactNative = require("bs-react-native/src/style.js");
+var Header$LambdaReasonReactNative = require("./Header.bs.js");
+var NoData$LambdaReasonReactNative = require("./NoData.bs.js");
+var MockedApi$LambdaReasonReactNative = require("./MockedApi.bs.js");
+var PersonModal$LambdaReasonReactNative = require("./PersonModal.bs.js");
+var ErrorMessage$LambdaReasonReactNative = require("./ErrorMessage.bs.js");
+var FilteredList$LambdaReasonReactNative = require("./FilteredList.bs.js");
 
 var container = Style$BsReactNative.style(/* :: */[
-      Style$BsReactNative.alignItems(/* Center */2),
-      /* :: */[
-        Style$BsReactNative.justifyContent(/* Center */2),
-        /* :: */[
-          Style$BsReactNative.paddingTop(/* Pt */Block.__(0, [30])),
-          /* [] */0
-        ]
-      ]
+      Style$BsReactNative.paddingTop(/* Pt */Block.__(0, [30])),
+      /* [] */0
     ]);
 
 var Styles = /* module */[/* container */container];
 
-var component = ReasonReact.statelessComponent("Home");
+var component = ReasonReact.reducerComponent("Home");
 
 function make() {
   return /* record */[
@@ -29,17 +29,92 @@ function make() {
           /* reactClassInternal */component[/* reactClassInternal */1],
           /* handedOffState */component[/* handedOffState */2],
           /* willReceiveProps */component[/* willReceiveProps */3],
-          /* didMount */component[/* didMount */4],
+          /* didMount */(function (self) {
+              return Curry._1(self[/* send */3], /* LoadData */0);
+            }),
           /* didUpdate */component[/* didUpdate */5],
           /* willUnmount */component[/* willUnmount */6],
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
-          /* render */(function () {
-              return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(container), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[ReasonReact.element(undefined, undefined, Text$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* array */["Hello LambdUp!"]))]));
+          /* render */(function (self) {
+              var match = self[/* state */1][/* response */1];
+              var tmp;
+              var exit = 0;
+              if (match !== undefined) {
+                var match$1 = match;
+                if (match$1.tag) {
+                  tmp = ReasonReact.element(undefined, undefined, ErrorMessage$LambdaReasonReactNative.make(match$1[1], match$1[0], (function () {
+                              return Curry._1(self[/* send */3], /* LoadData */0);
+                            }), /* array */[]));
+                } else if (match$1[0] !== 200) {
+                  exit = 1;
+                } else {
+                  var data = match$1[1];
+                  tmp = data ? ReasonReact.element(undefined, undefined, FilteredList$LambdaReasonReactNative.make(data, (function () {
+                                return Curry._1(self[/* send */3], /* LoadData */0);
+                              }), (function (value) {
+                                return Curry._1(self[/* send */3], /* ChangeQuery */Block.__(0, [value]));
+                              }), self[/* state */1][/* searchQuery */0], (function (person) {
+                                return Curry._1(self[/* send */3], /* OpenModal */Block.__(1, [person]));
+                              }), /* array */[])) : ReasonReact.element(undefined, undefined, NoData$LambdaReasonReactNative.make((function () {
+                                return Curry._1(self[/* send */3], /* LoadData */0);
+                              }), /* array */[]));
+                }
+              } else {
+                exit = 1;
+              }
+              if (exit === 1) {
+                tmp = ReasonReact.element(undefined, undefined, ErrorMessage$LambdaReasonReactNative.make("Cannot load data!", 400, (function () {
+                            return Curry._1(self[/* send */3], /* LoadData */0);
+                          }), /* array */[]));
+              }
+              var match$2 = self[/* state */1][/* openedModal */2];
+              return ReasonReact.element(undefined, undefined, View$BsReactNative.make(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, Js_primitive.some(container), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* array */[
+                              ReasonReact.element(undefined, undefined, Header$LambdaReasonReactNative.make("PEOPLE", /* array */[])),
+                              tmp,
+                              match$2 !== undefined ? ReasonReact.element(undefined, undefined, PersonModal$LambdaReasonReactNative.make(match$2, (function () {
+                                            return Curry._1(self[/* send */3], /* CloseModal */1);
+                                          }), /* array */[])) : null
+                            ]));
             }),
-          /* initialState */component[/* initialState */10],
+          /* initialState */(function () {
+              return /* record */[
+                      /* searchQuery */"",
+                      /* response */undefined,
+                      /* openedModal */undefined
+                    ];
+            }),
           /* retainedProps */component[/* retainedProps */11],
-          /* reducer */component[/* reducer */12],
+          /* reducer */(function (action, state) {
+              if (typeof action === "number") {
+                if (action === 0) {
+                  var response = MockedApi$LambdaReasonReactNative.getData(/* () */0);
+                  return /* Update */Block.__(0, [/* record */[
+                              /* searchQuery */state[/* searchQuery */0],
+                              /* response */response,
+                              /* openedModal */state[/* openedModal */2]
+                            ]]);
+                } else {
+                  return /* Update */Block.__(0, [/* record */[
+                              /* searchQuery */state[/* searchQuery */0],
+                              /* response */state[/* response */1],
+                              /* openedModal */undefined
+                            ]]);
+                }
+              } else if (action.tag) {
+                return /* Update */Block.__(0, [/* record */[
+                            /* searchQuery */state[/* searchQuery */0],
+                            /* response */state[/* response */1],
+                            /* openedModal */action[0]
+                          ]]);
+              } else {
+                return /* Update */Block.__(0, [/* record */[
+                            /* searchQuery */action[0],
+                            /* response */state[/* response */1],
+                            /* openedModal */state[/* openedModal */2]
+                          ]]);
+              }
+            }),
           /* jsElementWrapped */component[/* jsElementWrapped */13]
         ];
 }
